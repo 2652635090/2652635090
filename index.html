@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>留言板</title>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .message {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        #messageForm {
+            margin-bottom: 20px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #loginContainer {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #registerContainer {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>留言板</h1>
+
+    <!-- 登录表单 -->
+    <div id="loginContainer">
+        <h3>登录</h3>
+        <input type="email" id="loginEmail" placeholder="邮箱" required><br>
+        <input type="password" id="loginPassword" placeholder="密码" required><br>
+        <button id="loginButton">登录</button><br><br>
+        <p>没有账号? <span id="registerLink" style="cursor: pointer; color: blue;">注册</span></p>
+    </div>
+
+    <!-- 注册表单 -->
+    <div id="registerContainer">
+        <h3>注册</h3>
+        <input type="email" id="registerEmail" placeholder="邮箱" required><br>
+        <input type="password" id="registerPassword" placeholder="密码" required><br>
+        <button id="registerButton">注册</button><br><br>
+        <p>已有账号? <span id="loginLink" style="cursor: pointer; color: blue;">登录</span></p>
+    </div>
+
+    <!-- 登出按钮 -->
+    <div id="logoutContainer" style="display: none;">
+        <button id="logoutButton">登出</button>
+    </div>
+
+    <!-- 提交留言表单 -->
+    <form id="messageForm" style="display: none;">
+        <label for="name">姓名:</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <label for="message">留言内容:</label><br>
+        <textarea id="message" name="message" required></textarea><br>
+        <button type="submit">提交留言</button>
+    </form>
+
+    <!-- 显示留言 -->
+    <div id="messages"></div>
+
+    <script>
+        // Firebase 配置信息
+        const firebaseConfig = {
+            apiKey: "AIzaSyDHuDV0uw_ptSI-VxP6KvXEGjrP1UJVBBI",
+            authDomain: "lime1123.firebaseapp.com",
+            projectId: "lime1123",
+            storageBucket: "lime1123.firebasestorage.app",
+            messagingSenderId: "102066922684",
+            appId: "1:102066922684:web:ba5a2e74712987a70e5cb9"
+        };
+
+        // 初始化 Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore(app);
+        const auth = firebase.auth(app);
+
+        // 显示登录表单
+        function showLoginForm() {
+            document.getElementById("loginContainer").style.display = "block";
+            document.getElementById("registerContainer").style.display = "none";
+            document.getElementById("logoutContainer").style.display = "none";
+            document.getElementById("messageForm").style.display = "none";
+        }
+
+        // 显示注册表单
+        function showRegisterForm() {
+            document.getElementById("loginContainer").style.display = "none";
+            document.getElementById("registerContainer").style.display = "block";
+        }
+
+        // 显示留言表单和登出按钮
+        function showMessageForm() {
+            document.getElementById("loginContainer").style.display = "none";
+            document.getElementById("registerContainer").style.display = "none";
+            document.getElementById("logoutContainer").style.display = "block";
+            document.getElementById("messageForm").style.display = "block";
+        }
+
+        // 注册新用户
+        document.getElementById("registerButton").addEventListener("click", () => {
+            const email = document.getElementById("registerEmail").value;
+            const password = document.getElementById("registerPassword").value;
+            auth.createUserWithEmailAndPassword(email, password)
+                .then(() => {
+                    showLoginForm();
+                    alert("注册成功！请登录。");
+                })
+                .catch((error) => {
+                    alert("注册失败：" + error.message);
+                });
+        });
+
+        // 登录现有用户
+        document.getElementById("loginButton").addEventListener("click", () => {
+            const email = document.getElementById("loginEmail").value;
+            const password = document.getElementById("loginPassword").value;
+            auth.signInWithEmailAndPassword(email, password)
+                .then(() => {
+                    showMessageForm();
+                    loadMessages();
+                })
+                .catch((error) => {
+                    alert("登录失败：" + error.message);
+                });
+        });
+
+        // 登出用户
+        document.getElementById("logoutButton").addEventListener("click", () => {
+            auth.signOut().then(() => {
+                showLoginForm();
+            });
+        });
+
+        // 切换到注册表单
+        document.getElementById("registerLink").addEventListener("click", showRegisterForm);
+        document.getElementById("loginLink").addEventListener("click", showLoginForm);
+
+        // 监听用户的登录状态
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                showMessageForm();
+                loadMessages();
+            } else {
+                showLoginForm();
+            }
+        });
+
+        // 加载留言
+        async function loadMessages() {
+            const messagesRef = db.collection("messages");
+            const snapshot = await messagesRef.get();
+            const messageDiv = document.getElementById('messages');
+            messageDiv.innerHTML = '';
+            snapshot.forEach(doc => {
+                const messageData = doc.data();
+                const div = document.createElement('div');
+                div.classList.add('message');
+                div.innerHTML = `<strong>${messageData.name}</strong><p>${messageData.message}</p>`;
+                messageDiv.appendChild(div);
+            });
+        }
+
+        // 提交留言
+        document.getElementById('messageForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+
+            // 将留言存入 Firestore
+            await db.collection("messages").add({
+                name: name,
+                message: message,
+                userId: auth.currentUser.uid  // 保存用户 ID 以便后期操作
+            });
+
+            loadMessages();  // 刷新留言
+        });
+    </script>
+
+</body>
+</html>
