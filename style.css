@@ -1,0 +1,68 @@
+ 
+:root {
+    --primary-color: #6c5ce7;
+    --secondary-color: #ff9f43;
+    --matrix-green: #00ff00;
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    font-family: 'Comic Neue', cursive;
+}
+
+.cosmic-header {
+    background: var(--primary-color);
+    padding: 2rem;
+    position: relative;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.avatar-container {
+    width: 120px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.avatar-container:hover {
+    transform: rotate(8deg) scale(1.1);
+}
+
+.pixel-art {
+    border: 3px solid var(--secondary-color);
+    border-radius: 50%;
+    filter: drop-shadow(0 0 8px rgba(255,159,67,0.5));
+}
+
+/* 动态主题样式 */
+.dark-theme {
+    background: #2d3436;
+    color: #dfe6e9;
+}
+
+.matrix-theme {
+    background: #000;
+    color: var(--matrix-green);
+    text-shadow: 0 0 8px var(--matrix-green);
+}
+
+/* 悬浮动效 */
+.tag:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* 隐藏彩蛋样式 */
+.secret-activated {
+    animation: rainbow 2s infinite;
+}
+
+@keyframes rainbow {
+    0% { color: #ff0000; }
+    25% { color: #00ff00; }
+    50% { color: #0000ff; }
+    75% { color: #ff00ff; }
+    100% { color: #ff0000; }
+}
+ 
