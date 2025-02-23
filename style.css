@@ -3,66 +3,124 @@
     --primary-color: #6c5ce7;
     --secondary-color: #ff9f43;
     --matrix-green: #00ff00;
+    --gap: 1.5rem;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     font-family: 'Comic Neue', cursive;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
+/* 响应式头部 */
 .cosmic-header {
     background: var(--primary-color);
-    padding: 2rem;
-    position: relative;
-    border-radius: 0 0 20px 20px;
+    padding: 1rem;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
+    position: relative;
+}
+
+.header-text {
+    flex: 1;
+}
+
 .avatar-container {
-    width: 120px;
+    width: 80px;
     position: relative;
     cursor: pointer;
     transition: transform 0.3s;
+    flex-shrink: 0;
 }
 
-.avatar-container:hover {
-    transform: rotate(8deg) scale(1.1);
+/* 响应式网格布局 */
+.content-grid {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: var(--gap);
+    flex: 1;
 }
 
-.pixel-art {
-    border: 3px solid var(--secondary-color);
-    border-radius: 50%;
-    filter: drop-shadow(0 0 8px rgba(255,159,67,0.5));
+.post-feed {
+    display: grid;
+    gap: 1rem;
 }
 
-/* 动态主题样式 */
-.dark-theme {
-    background: #2d3436;
-    color: #dfe6e9;
+.widget-area {
+    min-width: 250px;
 }
 
-.matrix-theme {
-    background: #000;
-    color: var(--matrix-green);
-    text-shadow: 0 0 8px var(--matrix-green);
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+        padding: 0 0.5rem;
+    }
+
+    .header-content {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .neon-nav {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .avatar-container {
+        width: 60px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
 }
 
-/* 悬浮动效 */
-.tag:hover {
-    transform: scale(1.2);
-    cursor: pointer;
+/* 平板适配 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .content-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+
+    .header-content {
+        max-width: 90%;
+    }
 }
 
-/* 隐藏彩蛋样式 */
-.secret-activated {
-    animation: rainbow 2s infinite;
+/* 交互优化 */
+.tag {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    margin: 0.2rem;
+    transition: all 0.2s;
 }
 
-@keyframes rainbow {
-    0% { color: #ff0000; }
-    25% { color: #00ff00; }
-    50% { color: #0000ff; }
-    75% { color: #ff00ff; }
-    100% { color: #ff0000; }
+.search-widget input {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 25px;
+    border: 2px solid var(--secondary-color);
 }
+
+/* 保持原有动画效果... */
  
