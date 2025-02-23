@@ -3,22 +3,27 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>喵星的创意空间 🚀</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="cosmic-header">
-        <div class="avatar-container" id="secretAvatar">
-            <img src="https://example.com/avatar.png" alt="程序员喵星" class="pixel-art">
-            <div class="online-status"></div>
+        <div class="header-content">
+            <div class="avatar-container" id="secretAvatar">
+                <img src="https://example.com/avatar.png" alt="程序员喵星" class="pixel-art">
+                <div class="online-status"></div>
+            </div>
+            <div class="header-text">
+                <h1>🛸 欢迎来到喵星次元 🍜</h1>
+                <nav class="neon-nav">
+                    <a href="#home">🏠 次元入口</a>
+                    <a href="#posts">📜 时空日志</a>
+                    <a href="#about">👾 关于本星</a>
+                </nav>
+            </div>
+            <button id="themeSwitch" aria-label="切换主题">🌙</button>
         </div>
-        <h1>🛸 欢迎来到喵星次元 🍜</h1>
-        <nav class="neon-nav">
-            <a href="#home">🏠 次元入口</a>
-            <a href="#posts">📜 时空日志</a>
-            <a href="#about">👾 关于本星</a>
-        </nav>
-        <button id="themeSwitch">🌙 切换次元</button>
     </header>
 
     <main class="content-grid">
@@ -30,7 +35,7 @@
             </div>
             <div class="tag-cloud">
                 <span class="tag" data-tooltip="点击发现惊喜">✨ 隐藏关卡</span>
-                <!-- 更多标签... --
+                <!-- 更多标签... -->
             </div>
         </aside>
     </main>
