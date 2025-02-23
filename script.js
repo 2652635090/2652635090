@@ -1,46 +1,52 @@
  
-// 增加响应式检测
-function checkResponsive() {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    document.body.classList.toggle('mobile-view', isMobile);
-}
-
-// 在窗口变化时检测
-window.addEventListener('resize', checkResponsive);
-checkResponsive();
-
-// 优化后的主题切换
-const themeSwitch = document.getElementById('themeSwitch');
-let isMatrixMode = false;
-
-themeSwitch.addEventListener('click', () => {
-    const isDark = document.body.classList.toggle('dark-theme');
-    themeSwitch.textContent = isDark ? '🌞' : '🌙';
+document.addEventListener('DOMContentLoaded', () => {
+    // 移动端菜单切换
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
     
-    if(isMatrixMode) {
-        document.body.classList.remove('matrix-theme');
-        isMatrixMode = false;
-    }
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // 主题切换功能
+    const themeToggle = document.querySelector('.theme-toggle');
+    const body = document.body;
     
-    if(Math.random() < 0.1) {
-        document.body.classList.add('matrix-theme');
-        isMatrixMode = true;
-        setTimeout(() => alert('🔮 你发现了数字矩阵空间！'), 300);
-    }
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-theme');
+        localStorage.setItem('theme', body.classList.contains('dark-theme') ? 'dark' : 'light');
+    });
+
+    // 初始化主题
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') body.classList.add('dark-theme');
+
+    // 返回顶部按钮
+    const scrollTopBtn = document.querySelector('.scroll-top');
+    window.addEventListener('scroll', () => {
+        scrollTopBtn.style.opacity = window.scrollY > 500 ? '1' : '0';
+    });
+
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 图片懒加载
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    lazyImages.forEach(img => {
+        img.dataset.src = img.src;
+        img.src = '';
+        observer.observe(img);
+    });
 });
-
-// 优化移动端点击事件
-let lastTap = 0;
-secretAvatar.addEventListener('touchend', (e) => {
-    const currentTime = new Date().getTime();
-    if (currentTime - lastTap < 500) clickCount++;
-    else clickCount = 1;
-    lastTap = currentTime;
-    
-    if(clickCount >= 5) {
-        handleSecretActivation();
-    }
-});
-
-// 其他保持原有交互逻辑...
  
