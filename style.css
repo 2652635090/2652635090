@@ -147,4 +147,81 @@ body {
     font-family: 'Minecraft';
     src: url('https://fonts.cdnfonts.com/s/31392/Minecraft.woff') format('woff');
 }
+
+ 
+/* 服务器页面专用样式 */
+.server-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.meta-item {
+    background: rgba(106, 57, 9, 0.1);
+    padding: 1rem;
+    text-align: center;
+    border: 2px solid #5a3a1e;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.feature-card {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.config-table {
+    width: 100%;
+    margin: 2rem 0;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.config-table th {
+    background: var(--primary);
+    color: white;
+    padding: 1rem;
+}
+
+.config-table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.guide-steps {
+    counter-reset: step;
+}
+
+.guide-steps li {
+    position: relative;
+    padding-left: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.guide-steps li::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.server-footer .notice {
+    background: rgba(255, 0, 0, 0.1);
+    padding: 1rem;
+    margin: 2rem 0;
+}
+ 
  
