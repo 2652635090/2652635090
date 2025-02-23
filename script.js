@@ -3,7 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // 移动端菜单
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
-    hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    }
 
     // 彩蛋系统
     let inputBuffer = '';
