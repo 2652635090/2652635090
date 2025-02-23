@@ -28,6 +28,13 @@ body {
     transition: 0.3s all;
 }
 
+/* 修复主界面重叠 */
+.container {
+    padding: 0 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 .navbar {
     padding: 1rem;
     border-bottom: 1px solid rgba(0,0,0,0.1);
@@ -54,15 +61,18 @@ body {
     display: block;
 }
 
+/* 主界面标题修复 */
 .hero {
     text-align: center;
-    padding: 4rem 1rem;
+    padding: 2rem 1rem;
+    margin-top: 60px;
 }
 
 .glitch {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    margin-bottom: 1rem;
     position: relative;
-    display: inline-block;
+    display: block;
 }
 
 .glitch::before {
@@ -78,6 +88,7 @@ body {
     100% { clip-path: inset(10% 0 40% 0); }
 }
 
+/* 文章列表样式 */
 .post-item {
     position: relative;
     padding: 1.5rem;
@@ -85,18 +96,48 @@ body {
     border-radius: 8px;
     background: rgba(0,0,0,0.05);
     transition: 0.3s transform;
+    display: block;
+    text-decoration: none;
+    color: inherit;
 }
 
 .post-corner::before {
     content: "👹";
     position: absolute;
-    right: -5px;
-    top: -5px;
+    right: 5px;
+    top: 5px;
     opacity: 0.3;
     font-size: 1.2rem;
 }
 
+/* 文章内容页调整 */
+.post-content {
+    padding: 2rem 0;
+}
+
+.post-content p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    text-align: justify;
+}
+
 /* 移动端优化 */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0.5rem;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+        margin-top: 1rem;
+    }
+    
+    .post-item {
+        margin: 0.5rem 0;
+        padding: 1rem;
+    }
+}
+
 @media (min-width: 768px) {
     .hamburger { display: none; }
     .nav-links {
@@ -106,7 +147,13 @@ body {
     }
 }
 
-/* 彩蛋样式 */
+/* 页脚和彩蛋 */
+.main-footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 3rem;
+}
+
 .easter-egg {
     position: fixed;
     bottom: 20px;
