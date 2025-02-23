@@ -1,16 +1,17 @@
  
 :root {
-    --primary: #2c3e50;
-    --secondary: #3498db;
-    --accent: #e74c3c;
-    --bg: #f5f6fa;
-    --text: #2c3e50;
+    --primary: #4a752c;
+    --secondary: #b04a4a;
+    --accent: #ffd700;
+    --bg: #f0f0f0;
+    --text: #3d3d3d;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: #2d3436;
-        --text: #dfe6e9;
+        --bg: #2d2d2d;
+        --text: #e0e0e0;
+        --primary: #5a8f3c;
     }
 }
 
@@ -36,8 +37,15 @@ body {
 
 .navbar {
     padding: 1rem;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 2px solid var(--primary);
     position: relative;
+    background: rgba(255,255,255,0.9);
+}
+
+.logo {
+    font-family: 'Minecraft', monospace;
+    font-size: 1.5rem;
+    color: var(--primary);
 }
 
 .hamburger {
@@ -63,25 +71,22 @@ body {
 
 .hero {
     text-align: center;
-    padding: 3rem 1rem;
+    padding: 4rem 1rem;
     margin-top: 60px;
 }
 
 .hero h1 {
-    font-size: 2.2rem;
-    margin: 1rem 0;
-    color: var(--accent);
-    position: relative;
+    font-size: 2.5rem;
+    color: var(--secondary);
+    margin-bottom: 1rem;
 }
 
 .post-item {
     display: block;
     padding: 1.5rem;
     margin: 1rem 0;
-    border-radius: 8px;
     background: rgba(0,0,0,0.05);
-    text-decoration: none;
-    color: inherit;
+    border-left: 4px solid var(--primary);
     transition: transform 0.3s;
 }
 
@@ -89,33 +94,57 @@ body {
     transform: translateX(10px);
 }
 
-/* 彩蛋样式 */
-.easter-egg {
-    position: fixed;
-    bottom: -50px;
-    left: 50%;
-    width: 100px;
-    height: 100px;
-    background: var(--accent);
-    border-radius: 50%;
-    opacity: 0;
-    transition: 1s all;
+.minecraft-list {
+    list-style: none;
+    padding: 1rem;
+    background: rgba(106, 57, 9, 0.1);
+    border: 2px solid #5a3a1e;
 }
 
-/* 特殊状态 */
-body.secret-mode {
-    --bg: #1a1a1a;
-    --text: #fff;
-    --accent: #ffeb3b;
+.minecraft-list li {
+    padding: 0.5rem;
+    margin: 0.3rem 0;
+    border-bottom: 1px dashed var(--primary);
 }
 
-@media (max-width: 480px) {
+.minecraft-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    background: rgba(255,255,255,0.8);
+}
+
+.minecraft-table td, .minecraft-table th {
+    border: 2px solid var(--primary);
+    padding: 0.8rem;
+    text-align: left;
+}
+
+.secret-quote {
+    opacity: 0.1;
+    transition: 0.5s all;
+    cursor: pointer;
+    border-left: 4px solid var(--accent);
+}
+
+.secret-quote:hover {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
     .hero h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
     
-    .post-item {
-        padding: 1rem;
+    .nav-links {
+        width: 100%;
+        text-align: center;
     }
+}
+
+@font-face {
+    font-family: 'Minecraft';
+    src: url('https://fonts.cdnfonts.com/s/31392/Minecraft.woff') format('woff');
 }
  
