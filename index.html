@@ -4,46 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>喵星的创意空间 🚀</title>
+    <title>默默博客-MOMO</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="cosmic-header">
-        <div class="header-content">
-            <div class="avatar-container" id="secretAvatar">
-                <img src="https://example.com/avatar.png" alt="程序员喵星" class="pixel-art">
-                <div class="online-status"></div>
-            </div>
-            <div class="header-text">
-                <h1>🛸 欢迎来到喵星次元 🍜</h1>
-                <nav class="neon-nav">
-                    <a href="#home">🏠 次元入口</a>
-                    <a href="#posts">📜 时空日志</a>
-                    <a href="#about">👾 关于本星</a>
-                </nav>
-            </div>
-            <button id="themeSwitch" aria-label="切换主题">🌙</button>
-        </div>
+    <header class="main-header">
+        <nav class="navbar">
+            <a href="#" class="logo">TechMind</a>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#articles">文章</a></li>
+                <li><a href="#about">关于</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+            <button class="theme-toggle">🌓</button>
+            <div class="hamburger">☰</div>
+        </nav>
     </header>
 
-    <main class="content-grid">
-        <section class="post-feed" id="postContainer"></section>
-        
-        <aside class="widget-area">
-            <div class="search-widget">
-                <input type="text" placeholder="🔍 时空搜索...">
-            </div>
-            <div class="tag-cloud">
-                <span class="tag" data-tooltip="点击发现惊喜">✨ 隐藏关卡</span>
-                <!-- 更多标签... -->
-            </div>
-        </aside>
+    <main class="container">
+        <section class="hero">
+            <h1 class="animated-title">探索技术前沿</h1>
+            <p class="hero-subtitle">记录学习与创新的旅程</p>
+        </section>
+
+        <section class="article-grid">
+            <article class="card">
+                <img src="assets/post1.jpg" alt="人工智能" loading="lazy">
+                <div class="card-content">
+                    <h3>AI 时代的技术伦理</h3>
+                    <time datetime="2023-08-20">2023年8月20日</time>
+                    <p>探讨人工智能发展中的伦理挑战和应对策略...</p>
+                    <a href="#" class="read-more">阅读全文 →</a>
+                </div>
+            </article>
+            <!-- 更多文章... -->
+        </section>
     </main>
 
-    <footer class="retro-footer">
-        <p>© 3023 喵星联邦 • 试试点击头像5次👆</p>
-        <p class="easter-egg-hint">🕵️ 你能找到所有隐藏彩蛋吗？</p>
+    <footer class="main-footer">
+        <div class="social-links">
+            <a href="#" class="social-icon github">GitHub</a>
+            <a href="#" class="social-icon twitter">Twitter</a>
+        </div>
+        <p>© 2023 小明. 保留所有权利</p>
     </footer>
+
+    <button class="scroll-top">↑</button>
 
     <script src="script.js"></script>
 </body>
