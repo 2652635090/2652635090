@@ -1,142 +1,103 @@
  
-/* 我的世界风格主题 */
+/* style.css */
 :root {
-    --mc-green: #7dff7d;
-    --mc-dark: #1a1a1a;
-    --mc-border: #4d4d4d;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Courier New', monospace;
+    --primary-color: #4a90e2;
+    --secondary-color: #6c757d;
+    --background: #f8f9fa;
+    --text-color: #212529;
 }
 
 body {
-    background-color: #2d2d2d;
-    color: var(--mc-green);
-    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--background);
+    color: var(--text-color);
 }
 
-/* 导航栏样式 */
-.nav-bar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 1rem;
-    background: var(--mc-dark);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 4px solid var(--mc-border);
-    z-index: 1000;
+.main-header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
 }
 
-.menu-btn {
-    width: 2.5rem;
-    height: 2rem;
-    position: relative;
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    margin: 0 auto 1rem;
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-.menu-line {
-    position: absolute;
-    width: 100%;
-    height: 3px;
-    background: var(--mc-green);
-    transition: transform 0.3s, opacity 0.2s;
+.site-title {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin: 0;
+    font-weight: 600;
 }
 
-.menu-line:nth-child(1) { top: 0; }
-.menu-line:nth-child(2) { top: 50%; transform: translateY(-50%); }
-.menu-line:nth-child(3) { bottom: 0; }
-
-/* 侧边栏动画 */
-.sidebar {
+.sidebar-nav {
     position: fixed;
-    left: -250px;
-    top: 4.5rem;
-    width: 250px;
-    height: calc(100vh - 4.5rem);
-    background: var(--mc-dark);
-    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border-right: 4px solid var(--mc-border);
-    padding: 1.5rem;
-}
-
-.sidebar.active {
     left: 0;
-}
-
-.sidebar-item {
-    padding: 1rem;
-    margin: 0.8rem 0;
-    background: #333;
-    border: 2px solid var(--mc-border);
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.sidebar-item:hover {
-    transform: translateX(10px);
-}
-
-/* 内容区域 */
-.container {
-    margin-top: 6rem;
+    top: 0;
+    bottom: 0;
+    width: 240px;
+    background: white;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
     padding: 1.5rem;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.card-grid {
+.sidebar-nav.active {
+    transform: translateX(0);
+}
+
+.nav-item {
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background: #f1f1f1;
+    transform: translateX(8px);
+}
+
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
     display: grid;
     gap: 1.5rem;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .card {
-    position: relative;
-    background: var(--mc-dark);
+    background: white;
     padding: 1.5rem;
-    border: 4px solid var(--mc-border);
-    transition: all 0.3s ease;
-    min-height: 150px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(125, 255, 125, 0.15);
 }
 
-.pixel-corner {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    background: var(--mc-green);
-}
-
-.pixel-corner:nth-child(1) { top: -4px; left: -4px; }
-.pixel-corner:nth-child(2) { top: -4px; right: -4px; }
-.pixel-corner:nth-child(3) { bottom: -4px; left: -4px; }
-.pixel-corner:nth-child(4) { bottom: -4px; right: -4px; }
-
-/* 头像样式 */
-.avatar {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    border: 2px solid var(--mc-green);
-}
-
-/* 响应式设计 */
 @media (max-width: 768px) {
-    .card-grid {
-        grid-template-columns: 1fr;
+    .sidebar-nav {
+        width: 80%;
     }
     
-    .sidebar {
-        width: 80%;
-        left: -80%;
+    .content-container {
+        grid-template-columns: 1fr;
     }
 }
  
