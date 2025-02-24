@@ -8,39 +8,42 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- 汉堡菜单 -->
+    <div class="hamburger" id="hamburger">☰</div>
+    
     <!-- 头像容器 -->
     <div class="avatar-container">
-        <img src="https://via.placeholder.com/100" alt="MOMO的头像" class="avatar" id="mainAvatar">
+        <img src="Image_570024749910153.png" alt="MOMO的头像" class="avatar" id="mainAvatar">
     </div>
     
     <!-- 标题区 -->
     <header>
-        <h1>🍑 MOMO的小屋 🍑</h1>
-        <p>欢迎来到我的魔法小天地~ ✨</p>
+        <h1>🌿 MOMO的小屋 🌿</h1>
+        <p>静谧森林中的数字栖息地</p>
     </header>
 
-    <!-- 导航菜单 -->
-    <nav>
+    <!-- 可折叠导航 -->
+    <nav class="collapsible-nav" id="mainNav">
         <a href="index.html" class="nav-button">🏠 首页</a>
-        <a href="about.html" class="nav-button">🌸 关于</a>
+        <a href="about.html" class="nav-button">🍂 关于</a>
         <a href="gallery.html" class="nav-button">📸 相册</a>
-        <a href="message.html" class="nav-button">💌 留言板</a>
+        <a href="message.html" class="nav-button">✉️ 留言板</a>
     </nav>
 
     <!-- 内容区 -->
     <main>
         <section class="blog-posts" id="postsContainer">
-            <!-- 文章将通过JavaScript动态生成 -->
+            <!-- 动态生成文章 -->
         </section>
     </main>
 
     <!-- 页脚 -->
     <footer>
-        <p>🎀 版权所有 © MOMO的小屋 2024 | 访问次数: <span id="visitCount">0</span></p>
+        <p>🌲 版权所有 © MOMO的小屋 2024 | 访问次数: <span id="visitCount">0</span></p>
     </footer>
 
     <!-- 彩蛋提示 -->
-    <div id="easterEgg" class="hidden">🎉 发现彩蛋啦！</div>
+    <div id="easterEgg" class="hidden">🎍 发现秘境！</div>
 
     <script src="script.js"></script>
 </body>
