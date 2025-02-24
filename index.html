@@ -4,50 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOMO宇宙中心</title>
+    <title>MOMO的小屋</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- 星空背景 -->
-    <div class="star-field"></div>
-    
-    <!-- 主容器 -->
-    <div class="main-container">
-        <!-- 头部区域 -->
-        <header class="hero-section">
-            <img src="tx.png" alt="神秘头像" class="magic-avatar" id="avatar">
-            <h1 class="glowing-title">MOMO控制中心</h1>
-        </header>
-
-        <!-- 侧边导航 -->
-        <nav class="cyber-nav" id="nav">
-            <div class="nav-header">
-                <span class="nav-icon">◆</span>
-                <span>导航面板</span>
-            </div>
-            <div class="nav-item pulse">星际仪表盘</div>
-            <div class="nav-item pulse">量子通讯</div>
-            <div class="nav-item pulse">曲率引擎</div>
-            <div class="nav-item pulse">维度设置</div>
-        </nav>
-
-        <!-- 内容区域 -->
-        <main class="content-grid">
-            <div class="hologram-card">
-                <h3>空间折叠日历</h3>
-                <p>跨维度时间管理系统</p>
-                <div class="grid-pattern"></div>
-            </div>
-            <div class="hologram-card">
-                <h3>反物质存储</h3>
-                <p>安全系数 99.99%</p>
-                <div class="grid-pattern"></div>
-            </div>
-        </main>
+    <!-- 头像容器 -->
+    <div class="avatar-container">
+        <img src="https://via.placeholder.com/100" alt="MOMO的头像" class="avatar" id="mainAvatar">
     </div>
+    
+    <!-- 标题区 -->
+    <header>
+        <h1>🍑 MOMO的小屋 🍑</h1>
+        <p>欢迎来到我的魔法小天地~ ✨</p>
+    </header>
 
-    <!-- 隐藏彩蛋 -->
-    <div class="easter-egg" id="egg"></div>
+    <!-- 导航菜单 -->
+    <nav>
+        <a href="index.html" class="nav-button">🏠 首页</a>
+        <a href="about.html" class="nav-button">🌸 关于</a>
+        <a href="gallery.html" class="nav-button">📸 相册</a>
+        <a href="message.html" class="nav-button">💌 留言板</a>
+    </nav>
+
+    <!-- 内容区 -->
+    <main>
+        <section class="blog-posts" id="postsContainer">
+            <!-- 文章将通过JavaScript动态生成 -->
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>🎀 版权所有 © MOMO的小屋 2024 | 访问次数: <span id="visitCount">0</span></p>
+    </footer>
+
+    <!-- 彩蛋提示 -->
+    <div id="easterEgg" class="hidden">🎉 发现彩蛋啦！</div>
 
     <script src="script.js"></script>
 </body>
