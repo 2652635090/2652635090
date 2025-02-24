@@ -1,59 +1,51 @@
  
-// 侧边栏控制
-const menuButton = document.querySelector('.menu-btn');
-const sidebar = document.querySelector('.sidebar');
-const menuLines = document.querySelectorAll('.menu-line');
-
-// 菜单按钮动画
-function toggleMenu() {
-    sidebar.classList.toggle('active');
-    menuLines.forEach(line => {
-        line.classList.toggle('active');
-    });
-}
-
-// 点击外部关闭侧边栏
-document.addEventListener('click', (e) => {
-    if (!sidebar.contains(e.target) && !menuButton.contains(e.target)) {
-        sidebar.classList.remove('active');
-        menuLines.forEach(line => line.classList.remove('active'));
-    }
-});
-
-// 卡片交互效果
-document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('mousedown', () => {
-        card.style.transform = 'scale(0.98)';
-    });
+// script.js
+document.addEventListener('DOMContentLoaded', () => {
+    // 头像旋转功能
+    const avatar = document.getElementById('rotatingAvatar');
+    let rotated = false;
     
-    card.addEventListener('mouseup', () => {
-        card.style.transform = '';
+    avatar.addEventListener('click', () => {
+        rotated = !rotated;
+        avatar.style.transform = rotated ? 'rotate(30deg)' : 'rotate(0deg)';
     });
+
+    // 侧边栏导航控制
+    const sidebar = document.querySelector('.sidebar-nav');
     
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
+    document.addEventListener('click', (e) => {
+        if (e.target.closest('.nav-item')) {
+            sidebar.classList.remove('active');
+        }
     });
-});
 
-// 页面加载动画
-window.addEventListener('load', () => {
-    document.body.style.opacity = '1';
-    setTimeout(() => {
-        document.querySelector('.title').style.textShadow = '0 0 10px #7dff7d';
-    }, 500);
-});
+    // 移动端侧边栏手势控制
+    let touchStartX = 0;
+    
+    document.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+    });
 
-// 移动端触摸事件处理
-let touchStartX = 0;
+    document.addEventListener('touchend', e => {
+        const touchEndX = e.changedTouches[0].clientX;
+        const deltaX = touchEndX - touchStartX;
+        
+        if (deltaX > 60) {
+            sidebar.classList.add('active');
+        } else if (deltaX < -60) {
+            sidebar.classList.remove('active');
+        }
+    });
 
-sidebar.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-});
+    // 桌面端悬停显示侧边栏
+    document.addEventListener('mousemove', e => {
+        if (e.clientX < 20 && !sidebar.classList.contains('active')) {
+            sidebar.classList.add('active');
+        }
+    });
 
-sidebar.addEventListener('touchend', e => {
-    const touchEndX = e.changedTouches[0].screenX;
-    if (touchStartX - touchEndX > 50) {
+    sidebar.addEventListener('mouseleave', () => {
         sidebar.classList.remove('active');
-    }
+    });
 });
  
