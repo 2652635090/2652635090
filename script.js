@@ -1,71 +1,66 @@
  
-// script.js
-document.addEventListener('DOMContentLoaded', () => {
-    // 导航栏动画控制器
-    let navState = false;
-    const nav = document.getElementById('nav');
-    
-    // 头像交互系统
-    const avatar = document.getElementById('avatar');
-    let rotateCount = 0;
-    
-    avatar.addEventListener('click', () => {
-        rotateCount += 30;
-        avatar.style.transform = `rotate(${rotateCount}deg)`;
-        
-        // 激活隐藏菜单
-        if (rotateCount % 360 === 90) {
-            nav.classList.add('active');
-            setTimeout(() => nav.classList.remove('active'), 5000);
-        }
-    });
+// 访问计数器
+let visitCount = localStorage.getItem('visitCount') || 0;
+visitCount++;
+document.getElementById('visitCount').textContent = visitCount;
+localStorage.setItem('visitCount', visitCount);
 
-    // 动态星空生成器
-    function createStars() {
-        const container = document.querySelector('.star-field');
-        for (let i = 0; i < 200; i++) {
-            const star = document.createElement('div');
-            star.style.cssText = `
-                position: absolute;
-                width: ${Math.random() * 3}px;
-                height: ${Math.random() * 3}px;
-                background: white;
-                top: ${Math.random() * 100}%;
-                left: ${Math.random() * 100}%;
-                opacity: ${Math.random()};
-            `;
-            container.appendChild(star);
-        }
+// 动态生成文章
+const posts = [
+    { title: "🎀 欢迎来到我的小屋！", content: "这是我的第一个博客文章，快来和我做朋友吧～" },
+    { title: "📸 今日自拍", content: "发现了一家超可爱的咖啡店！" },
+    { title: "🍰 烘焙日记", content: "第一次尝试做草莓蛋糕大成功！" }
+];
+
+const postsContainer = document.getElementById('postsContainer');
+posts.forEach(post => {
+    const postElement = document.createElement('div');
+    postElement.className = 'post-card';
+    postElement.innerHTML = `
+        <h3>${post.title}</h3>
+        <p>${post.content}</p>
+    `;
+    postsContainer.appendChild(postElement);
+});
+
+// 彩蛋1: 点击头像特效
+document.getElementById('mainAvatar').addEventListener('click', function() {
+    this.style.transform = 'rotate(360deg) scale(1.2)';
+    setTimeout(() => {
+        this.style.transform = 'none';
+    }, 1000);
+    
+    const egg = document.getElementById('easterEgg');
+    egg.style.display = 'block';
+    setTimeout(() => {
+        egg.style.display = 'none';
+    }, 2000);
+});
+
+// 彩蛋2: 键盘秘籍
+let konamiCode = [];
+document.addEventListener('keydown', (e) => {
+    konamiCode.push(e.key);
+    if (konamiCode.slice(-4).join('') === 'momo') {
+        document.body.style.background = `hsl(${Math.random()*360}, 70%, 90%)`;
+        konamiCode = [];
     }
-    createStars();
+});
 
-    // 全息卡片悬浮系统
-    document.querySelectorAll('.hologram-card').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-        });
-    });
-
-    // 隐藏彩蛋触发器 (Konami Code)
-    const egg = document.getElementById('egg');
-    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-    let konamiIndex = 0;
-    
-    document.addEventListener('keydown', (e) => {
-        e.key === konamiCode[konamiIndex] ? konamiIndex++ : konamiIndex = 0;
+// 彩蛋3: 鼠标跟随特效
+document.addEventListener('mousemove', (e) => {
+    if (Math.random() < 0.1) { // 10%概率触发
+        const star = document.createElement('div');
+        star.style.position = 'fixed';
+        star.style.left = e.pageX + 'px';
+        star.style.top = e.pageY + 'px';
+        star.style.color = '#FF69B4';
+        star.textContent = '✨';
+        document.body.appendChild(star);
         
-        if (konamiIndex === konamiCode.length) {
-            egg.style.opacity = '1';
-            egg.style.bottom = '20px';
-            setTimeout(() => {
-                egg.style.opacity = '0';
-                egg.style.bottom = '-100px';
-            }, 2000);
-        }
-    });
+        setTimeout(() => {
+            star.remove();
+        }, 1000);
+    }
 });
  
