@@ -1,49 +1,59 @@
  
-document.addEventListener('DOMContentLoaded', () => {
-    // 移动端菜单
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+// 侧边栏控制
+const menuButton = document.querySelector('.menu-btn');
+const sidebar = document.querySelector('.sidebar');
+const menuLines = document.querySelectorAll('.menu-line');
+
+// 菜单按钮动画
+function toggleMenu() {
+    sidebar.classList.toggle('active');
+    menuLines.forEach(line => {
+        line.classList.toggle('active');
+    });
+}
+
+// 点击外部关闭侧边栏
+document.addEventListener('click', (e) => {
+    if (!sidebar.contains(e.target) && !menuButton.contains(e.target)) {
+        sidebar.classList.remove('active');
+        menuLines.forEach(line => line.classList.remove('active'));
     }
+});
 
-    // 彩蛋系统
-    const easterEgg = document.querySelector('.easter-egg');
-    let secretCount = 0;
-    const minecraftCode = [77, 73, 78, 69, 67, 82, 65, 70, 84]; // MINECRAFT
-
-    // 彩蛋1：MINECRAFT输入
-    document.addEventListener('keydown', (e) => {
-        keyBuffer.push(e.keyCode);
-        if(keyBuffer.slice(-minecraftCode.length).join() === minecraftCode.join()) {
-            document.body.style.background = `linear-gradient(45deg, ${getRandomColor()}, ${getRandomColor()})`;
-            setTimeout(() => {
-                document.body.style.background = '';
-            }, 2000);
-        }
+// 卡片交互效果
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('mousedown', () => {
+        card.style.transform = 'scale(0.98)';
     });
-
-    // 彩蛋2：点击生成方块
-    document.querySelectorAll('.post-content').forEach(post => {
-        post.addEventListener('click', function(e) {
-            const block = document.createElement('div');
-            block.style.cssText = `
-                position: absolute;
-                width: 16px;
-                height: 16px;
-                background: ${getRandomColor()};
-                left: ${e.pageX - 8}px;
-                top: ${e.pageY - 8}px;
-                pointer-events: none;
-            `;
-            document.body.appendChild(block);
-            setTimeout(() => block.remove(), 1000);
-        });
+    
+    card.addEventListener('mouseup', () => {
+        card.style.transform = '';
     });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+    });
+});
 
-    // 工具函数
-    function getRandomColor() {
-        return `hsl(${Math.random() * 360}, 70%, 60%)`;
+// 页面加载动画
+window.addEventListener('load', () => {
+    document.body.style.opacity = '1';
+    setTimeout(() => {
+        document.querySelector('.title').style.textShadow = '0 0 10px #7dff7d';
+    }, 500);
+});
+
+// 移动端触摸事件处理
+let touchStartX = 0;
+
+sidebar.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+sidebar.addEventListener('touchend', e => {
+    const touchEndX = e.changedTouches[0].screenX;
+    if (touchStartX - touchEndX > 50) {
+        sidebar.classList.remove('active');
     }
 });
  
