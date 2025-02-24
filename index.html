@@ -8,27 +8,32 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- 汉堡菜单 -->
-    <div class="hamburger" id="hamburger">☰</div>
-    
-    <!-- 头像容器 -->
-    <div class="avatar-container">
-        <img src="Image_570024749910153.png" alt="MOMO的头像" class="avatar" id="mainAvatar">
-    </div>
-    
     <!-- 标题区 -->
     <header>
-        <h1>🌿 MOMO的小屋 🌿</h1>
-        <p>静谧森林中的数字栖息地</p>
+        <div class="header-content">
+            <!-- 汉堡菜单 -->
+            <div class="hamburger" id="hamburger">☰</div>
+            
+            <!-- 头像 -->
+            <div class="avatar-container">
+                <img src="https://via.placeholder.com/100" alt="MOMO的头像" class="avatar" id="mainAvatar">
+            </div>
+            
+            <!-- 标题文字 -->
+            <div class="title-group">
+                <h1>🌿 MOMO的小屋 🌿</h1>
+                <p class="subtitle">静谧森林中的数字栖息地</p>
+            </div>
+            
+            <!-- 导航菜单 -->
+            <nav class="collapsible-nav" id="mainNav">
+                <a href="index.html" class="nav-button">🏠 首页</a>
+                <a href="about.html" class="nav-button">🍂 关于</a>
+                <a href="gallery.html" class="nav-button">📸 相册</a>
+                <a href="message.html" class="nav-button">✉️ 留言板</a>
+            </nav>
+        </div>
     </header>
-
-    <!-- 可折叠导航 -->
-    <nav class="collapsible-nav" id="mainNav">
-        <a href="index.html" class="nav-button">🏠 首页</a>
-        <a href="about.html" class="nav-button">🍂 关于</a>
-        <a href="gallery.html" class="nav-button">📸 相册</a>
-        <a href="message.html" class="nav-button">✉️ 留言板</a>
-    </nav>
 
     <!-- 内容区 -->
     <main>
