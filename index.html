@@ -8,41 +8,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="nav-bar">
-        <div class="menu-btn">
-            <span class="menu-line"></span>
-            <span class="menu-line"></span>
-            <span class="menu-line"></span>
-        </div>
-        <h1 class="title">MOMO快速访问</h1>
-        <img src="Image_570024749910153.png" alt="用户头像" class="avatar">
+    <header class="main-header">
+        <img src="tx.png" alt="用户头像" class="avatar" id="rotatingAvatar">
+        <h1 class="site-title">MOMO快速访问</h1>
+    </header>
+
+    <nav class="sidebar-nav">
+        <div class="nav-item">首页</div>
+        <div class="nav-item">个人中心</div>
+        <div class="nav-item">消息通知</div>
+        <div class="nav-item">文件管理</div>
+        <div class="nav-item">系统设置</div>
     </nav>
 
-    <aside class="sidebar">
-        <div class="sidebar-item">我的仪表盘</div>
-        <div class="sidebar-item">消息中心</div>
-        <div class="sidebar-item">文件仓库</div>
-        <div class="sidebar-item">系统设置</div>
-        <div class="sidebar-item">技术支持</div>
-    </aside>
-
-    <main class="container">
-        <section class="card-grid">
-            <article class="card">
-                <h3>快速笔记</h3>
-                <p>随时记录重要想法和临时信息</p>
-                <div class="pixel-corner"></div>
-            </article>
-            <article class="card">
-                <h3>项目看板</h3>
-                <p>跟踪所有进行中的项目进度</p>
-                <div class="pixel-corner"></div>
-            </article>
-            <article class="card">
-                <h3>会议日历</h3>
-                <p>安排和管理所有会议日程</p>
-                <div class="pixel-corner"></div>
-            </article>
+    <main class="content-container">
+        <section class="card">
+            <h2>今日待办</h2>
+            <p>3个未完成任务</p>
+        </section>
+        <section class="card">
+            <h2>数据看板</h2>
+            <p>最新统计信息</p>
         </section>
     </main>
 
