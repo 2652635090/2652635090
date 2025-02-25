@@ -1,208 +1,150 @@
  
 :root {
-    --bg-color: #1a201a;
-    --primary-color: #3a4a3a;
-    --secondary-color: #4a5d4a;
-    --text-color: #e0e8e0;
-    --accent-color: #5a6d5a;
-    --border-color: #3d4a3d;
+    --primary: #4a752c;
+    --secondary: #b04a4a;
+    --accent: #ffd700;
+    --bg: #f0f0f0;
+    --text: #3d3d3d;
 }
 
-/* 基础样式 */
-body {
-    font-family: 'Helvetica Neue', '微软雅黑', sans-serif;
-    background: var(--bg-color);
-    color: var(--text-color);
-    line-height: 1.7;
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #2d2d2d;
+        --text: #e0e0e0;
+        --primary: #5a8f3c;
+    }
+}
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-/* 标题区 */
-header {
-    background: linear-gradient(160deg, var(--primary-color), var(--secondary-color));
-    padding: 1rem 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+body {
+    font-family: 'Helvetica Neue', system-ui;
+    line-height: 1.8;
+    color: var(--text);
+    background: var(--bg);
+    transition: 0.3s all;
 }
 
-.header-wrapper {
-    max-width: 1200px;
+.container {
+    padding: 0 1rem;
+    max-width: 800px;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    padding: 0 2rem;
 }
 
-.avatar-container {
-    margin-right: 2rem;
+.navbar {
+    padding: 1rem;
+    border-bottom: 2px solid var(--primary);
+    position: relative;
+    background: rgba(255,255,255,0.9);
 }
 
-.avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 3px solid var(--accent-color);
-    box-shadow: 0 0 15px rgba(90, 109, 90, 0.4);
+.logo {
+    font-family: 'Minecraft', monospace;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.hamburger {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.nav-links {
+    display: none;
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.nav-links.active {
+    display: block;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    margin-top: 60px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    color: var(--secondary);
+    margin-bottom: 1rem;
+}
+
+.post-item {
+    display: block;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    background: rgba(0,0,0,0.05);
+    border-left: 4px solid var(--primary);
     transition: transform 0.3s;
 }
 
-/* 标题文字 */
-.title-group {
-    flex: 1;
-    min-width: 250px;
+.post-item:hover {
+    transform: translateX(10px);
 }
 
-h1 {
-    color: #f0f8f0;
-    font-size: 2.4rem;
-    margin: 0 0 0.5rem 0;
-    letter-spacing: 1px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+.minecraft-list {
+    list-style: none;
+    padding: 1rem;
+    background: rgba(106, 57, 9, 0.1);
+    border: 2px solid #5a3a1e;
 }
 
-.subtitle {
-    color: #c0d8c0;
-    font-size: 1.1rem;
-    margin: 0;
+.minecraft-list li {
+    padding: 0.5rem;
+    margin: 0.3rem 0;
+    border-bottom: 1px dashed var(--primary);
 }
 
-/* 导航系统 */
-.hamburger {
-    display: none;
-    position: absolute;
-    top: 1.5rem;
-    right: 2rem;
-    font-size: 1.5rem;
+.minecraft-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    background: rgba(255,255,255,0.8);
+}
+
+.minecraft-table td, .minecraft-table th {
+    border: 2px solid var(--primary);
+    padding: 0.8rem;
+    text-align: left;
+}
+
+.secret-quote {
+    opacity: 0.1;
+    transition: 0.5s all;
     cursor: pointer;
-    color: var(--text-color);
-    z-index: 1000;
+    border-left: 4px solid var(--accent);
 }
 
-.collapsible-nav {
-    flex: 2;
-    min-width: 60%;
+.secret-quote:hover {
+    opacity: 1;
+    transform: scale(1.02);
 }
 
-.nav-inner {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1.5rem;
-    padding: 0 1rem;
-}
-
-.nav-button {
-    padding: 0.6rem 1.2rem;
-    background: var(--accent-color);
-    border-radius: 2rem;
-    color: #f0f8f0;
-    text-decoration: none;
-    transition: all 0.3s;
-    font-size: 0.95rem;
-    white-space: nowrap;
-}
-
-.nav-button:hover {
-    background: #6a7d6a;
-    transform: translateY(-2px);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-
-/* 内容区 */
-.blog-posts {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 0 2rem;
-}
-
-.post-card {
-    background: var(--primary-color);
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    border-radius: 0.8rem;
-    border: 1px solid var(--border-color);
-    transition: transform 0.2s;
-}
-
-.post-card:hover {
-    transform: translateY(-3px);
-}
-
-/* 页脚 */
-footer {
-    text-align: center;
-    padding: 2rem;
-    margin-top: 3rem;
-    color: #a0b8a0;
-    border-top: 1px solid var(--border-color);
-}
-
-/* 彩蛋样式 */
-.easter-egg {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--accent-color);
-    color: white;
-    padding: 1.5rem 2rem;
-    border-radius: 1rem;
-    animation: pop 0.5s;
-    font-size: 1.2rem;
-    box-shadow: 0 0 20px rgba(90, 109, 90, 0.5);
-}
-
-@keyframes pop {
-    0% { transform: translate(-50%, -50%) scale(0); }
-    60% { transform: translate(-50%, -50%) scale(1.1); }
-    100% { transform: translate(-50%, -50%) scale(1); }
-}
-
-/* 响应式设计 */
 @media (max-width: 768px) {
-    .header-wrapper {
-        flex-direction: column;
-        padding: 1rem;
+    .hero h1 {
+        font-size: 2rem;
     }
-
-    .avatar-container {
-        margin: 0 0 1rem 0;
-    }
-
-    .hamburger {
-        display: block;
-    }
-
-    .collapsible-nav {
-        width: 100%;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-out;
-    }
-
-    .nav-inner {
-        flex-direction: column;
-        padding: 1rem 0;
-    }
-
-    .nav-show {
-        max-height: 500px;
-    }
-
-    .nav-button {
+    
+    .nav-links {
         width: 100%;
         text-align: center;
     }
 }
 
-@media (min-width: 1200px) {
-    .blog-posts {
-        column-count: 2;
-        column-gap: 2rem;
-    }
-    
-    .post-card {
-        break-inside: avoid;
-    }
+@font-face {
+    font-family: 'Minecraft';
+    src: url('https://fonts.cdnfonts.com/s/31392/Minecraft.woff') format('woff');
 }
  
