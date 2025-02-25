@@ -4,57 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOMO的小屋</title>
+    <title>MOMO的方块世界</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- 标题区 -->
-    <header>
-        <div class="header-wrapper">
-            <!-- 头像 -->
-            <div class="avatar-container">
-                <img src="Image_570024749910153.png" alt="MOMO的头像" class="avatar" id="mainAvatar">
-            </div>
-
-            <!-- 标题与导航容器 -->
-            <div class="header-content">
-                <!-- 汉堡菜单 -->
-                <div class="hamburger" id="hamburger">☰</div>
-                
-                <!-- 文字标题 -->
-                <div class="title-group">
-                    <h1>🌿 MOMO的小屋 🌿</h1>
-                    <p class="subtitle">数字森林中的静谧空间</p>
-                </div>
-
-                <!-- 导航菜单 -->
-                <nav class="collapsible-nav" id="mainNav">
-                    <div class="nav-inner">
-                        <a href="index.html" class="nav-button">🏠 首页</a>
-                        <a href="about.html" class="nav-button">🍂 关于</a>
-                        <a href="gallery.html" class="nav-button">📸 相册</a>
-                        <a href="message.html" class="nav-button">✉️ 留言</a>
-                    </div>
-                </nav>
-            </div>
-        </div>
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="logo">MOMO's Blog</div>
+            <button class="hamburger">☰</button>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="articles.html">游戏心得</a></li>
+                <li><a href="about.html">关于我</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- 内容区 -->
-    <main>
-        <section class="blog-posts" id="postsContainer">
-            <!-- 动态生成文章 -->
+    <main class="container">
+        <section class="hero">
+            <h1>方块世界研究所</h1>
+            <p class="subtitle">「每一块像素都是创造的可能」</p>
+        </section>
+
+        <section class="recent-posts">
+            <h2>最新攻略</h2>
+            <div class="post-list">
+                <a href="articles.html#redstone" class="post-item">
+                    <h3>红石机关大全</h3>
+                    <time>2023-09-10</time>
+                </a>
+                <a href="articles.html#build" class="post-item">
+                    <h3>中世纪建筑指南</h3>
+                    <time>2023-09-05</time>
+                </a>
+            </div>
         </section>
     </main>
 
-    <!-- 页脚 -->
-    <footer>
-        <p>🌲 版权所有 © MOMO的小屋 2024 | 访问次数: <span id="visitCount">0</span></p>
+    <footer class="main-footer">
+        <p class="copyright">© 2023 MOMO</p>
     </footer>
 
-    <!-- 彩蛋提示 -->
-    <div id="easterEgg" class="easter-egg">🎍 发现秘境！</div>
-
+    <div class="easter-egg"></div>
     <script src="script.js"></script>
 </body>
 </html>
