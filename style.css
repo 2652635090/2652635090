@@ -148,3 +148,275 @@ body {
     src: url('https://fonts.cdnfonts.com/s/31392/Minecraft.woff') format('woff');
 }
  
+
+ 
+/* 服务器页面专用样式 */
+.server-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.meta-item {
+    background: rgba(106, 57, 9, 0.1);
+    padding: 1rem;
+    text-align: center;
+    border: 2px solid #5a3a1e;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.feature-card {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.config-table {
+    width: 100%;
+    margin: 2rem 0;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.config-table th {
+    background: var(--primary);
+    color: white;
+    padding: 1rem;
+}
+
+.config-table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.guide-steps {
+    counter-reset: step;
+}
+
+.guide-steps li {
+    position: relative;
+    padding-left: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.guide-steps li::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.server-footer .notice {
+    background: rgba(255, 0, 0, 0.1);
+    padding: 1rem;
+    margin: 2rem 0;
+}
+ 
+ 
+/* 头像样式 */
+.title-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.avatar:hover {
+    transform: rotate(15deg) scale(1.1);
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .title-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .avatar {
+        width: 60px;
+        height: 60px;
+        order: -1; /* 头像在上方 */
+    }
+}
+ 
+
+ 
+/* 光遇专题页样式 */
+.sky-hero {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
+    border-radius: 12px;
+    margin: 2rem 0;
+}
+
+.sky-title h1 {
+    font-family: 'Minecraft', cursive;
+    color: #fff;
+    text-shadow: 2px 2px #2c3e50;
+}
+
+.version-info {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    color: rgba(255,255,255,0.8);
+    margin-top: 1rem;
+}
+
+.game-features .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.feature-card {
+    background: rgba(255,255,255,0.1);
+    padding: 1.5rem;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+}
+
+.feature-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.newbie-guide details {
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin: 1rem 0;
+    padding: 1rem;
+}
+
+.newbie-guide summary {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.player-stories blockquote {
+    border-left: 3px solid #ff6b6b;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+}
+
+.sky-footer .official-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+@media (max-width: 768px) {
+    .version-info {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+ 
+
+ 
+/* Minecraft专题页样式 */
+.minecraft-intro {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: linear-gradient(135deg, #4a752c, #2c3e50);
+    color: white;
+}
+
+.version-box {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+}
+
+.resource-portal .portal-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.category {
+    background: rgba(0,0,0,0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.category h3 {
+    color: #ffd700;
+    margin-bottom: 1rem;
+}
+
+.mod-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.mod-card {
+    background: rgba(106, 57, 9, 0.1);
+    padding: 1.5rem;
+    border-left: 4px solid #b04a4a;
+}
+
+.pro-tips {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.tip-card {
+    background: rgba(255,255,255,0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .pro-tips {
+        grid-template-columns: 1fr;
+    }
+    
+    .version-box {
+        flex-direction: column;
+    }
+}
+ 
+
+
