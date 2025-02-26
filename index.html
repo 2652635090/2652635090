@@ -1,56 +1,127 @@
  
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="tutorial-template">
 <head>
+    <!-- 基础元信息 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MOMO的小屋</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Minecraft技术文档 - 建筑与红石系统研究">
+    
+    <!-- 资源声明 -->
+    <title>MOMO技术文档中心</title>
+    <link rel="stylesheet" href="docs-style.css">
 </head>
+
 <body>
-    <header class="main-header">
-        <nav class="navbar">
-            <div class="logo">MOMO's Cottage</div>
-            <button class="hamburger">☰</button>
-            <ul class="nav-links">
-                <li><a href="index.html">➡️首页</a></li>
-                <li><a href="articles.html">➡️游戏心得</a></li>
-                <li><a href="about.html">➡️关于</a></li>
+    <!-- 导航系统 -->
+    <header class="docs-header">
+        <nav class="navbar" aria-label="Main navigation">
+            <div class="branding">
+                <img src="icon.png" alt="Logo" class="brand-icon">
+                <span class="product-name">MOMO DOCS</span>
+            </div>
+            
+            <!-- 响应式导航组件 -->
+            <button class="menu-toggle" aria-expanded="false" aria-controls="nav-menu">
+                <span class="hamburger">☰</span>
+                <span class="sr-only">导航菜单</span>
+            </button>
+            
+            <ul id="nav-menu" class="nav-menu">
+                <li class="menu-item"><a href="#home" class="nav-link">🏠 核心文档</a></li>
+                <li class="menu-item"><a href="#redstone" class="nav-link">🔌 红石系统</a></li>
+                <li class="menu-item"><a href="#architecture" class="nav-link">🏰 建筑规范</a></li>
             </ul>
         </nav>
     </header>
 
-    <main class="container">
-       <section class="hero">
-    <div class="title-wrapper">
-        <img src="Image_570024749910153.png" alt="MOMO头像" class="avatar">
-        <h1>世界研究所</h1>
-    </div>
-    <p class="subtitle">「每一块像素都是创造的可能」</p>
-</section>
-
-
-        <section class="recent-posts">
-            <h2>最新攻略</h2>
-            <div class="post-list">
-                <a href="articles.html#redstone" class="post-item">
-                    <h3>红石机关大全</h3>
-                    <time>2023-09-10</time>
-                </a>
-                <a href="articles.html#build" class="post-item">
-                    <h3>中世纪建筑指南</h3>
-                    <time>2023-09-05</time>
-                </a>
-            </div>
+    <!-- 文档主体 -->
+    <main class="docs-container">
+        <!-- 文档标题区 -->
+        <section class="docs-hero">
+            <header class="hero-header">
+                <div class="author-badge">
+                    <img src="avatar.png" alt="作者头像" class="author-avatar">
+                    <div class="author-meta">
+                        <h1 class="book-title">Minecraft 大师指南</h1>
+                        <p class="book-version">v2.1.5 (2023-09更新)</p>
+                    </div>
+                </div>
+                <blockquote class="expert-note">
+                    <p>「像素世界的工程学规范与建筑艺术」</p>
+                </blockquote>
+            </header>
         </section>
+
+        <!-- 内容目录模块 -->
+        <article class="docs-content">
+            <section class="chapter-section">
+                <h2 class="section-title">📚 最新技术文档</h2>
+                
+                <!-- 文档条目 -->
+                <div class="document-list">
+                    <article class="doc-card" id="redstone-guide">
+                        <header class="doc-header">
+                            <h3 class="doc-title">
+                                <a href="#redstone-systems" class="doc-link">
+                                    <span class="doc-icon">🛠️</span>
+                                    红石工程规范手册
+                                </a>
+                            </h3>
+                            <div class="doc-meta">
+                                <span class="doc-version">v1.2</span>
+                                <time class="doc-date">2023-09-10</time>
+                            </div>
+                        </header>
+                        <div class="doc-excerpt">
+                            <p>包含红石电路设计规范、信号传输优化方案及自动化系统实现...</p>
+                        </div>
+                    </article>
+
+                    <article class="doc-card" id="architecture-guide">
+                        <header class="doc-header">
+                            <h3 class="doc-title">
+                                <a href="#medieval-architecture" class="doc-link">
+                                    <span class="doc-icon">🏯</span>
+                                    中世纪建筑标准
+                                </a>
+                            </h3>
+                            <div class="doc-meta">
+                                <span class="doc-version">v2.0</span>
+                                <time class="doc-date">2023-09-05</time>
+                            </div>
+                        </header>
+                        <div class="doc-excerpt">
+                            <p>建筑比例规范、材料选择指南及历史建筑复原方案...</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </article>
     </main>
 
-    <footer class="main-footer">
-        <p class="copyright">© 2023 MOMO</p>
+    <!-- 文档辅助信息 -->
+    <footer class="docs-footer">
+        <div class="footer-grid">
+            <div class="copyright-info">
+                <p>© 2023 MOMO Documentation Center</p>
+                <p>License: CC BY-NC-SA 4.0</p>
+            </div>
+            <nav class="footer-links">
+                <a href="#changelog" class="footer-link">版本历史</a>
+                <a href="#contribute" class="footer-link">参与贡献</a>
+            </nav>
+        </div>
     </footer>
 
-    <div class="easter-egg"></div>
-    <script src="script.js"></script>
+    <!-- 交互增强组件 -->
+    <div class="docs-utils">
+        <button class="feedback-button" aria-label="提交反馈">💬 文档反馈</button>
+        <div class="scroll-progress"></div>
+    </div>
+
+    <!-- 脚本加载 -->
+    <script src="docs-script.js" async></script>
 </body>
 </html>
  
